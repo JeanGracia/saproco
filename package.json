@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "clean": "rm -rf node_modules"
     },
     "devDependencies": {
         "@alpinejs/collapse": "^3.4.2",
