@@ -45,7 +45,7 @@ class GestionController extends Controller
 
     public function buscarFactura()
     {
-        return view('buscarFactura');
+        return view('gestionweb.buscarFactura');
     }
 
     public function index(Request $request, Asignacion $asignaciones)
@@ -208,7 +208,7 @@ class GestionController extends Controller
             //dd($return);
             //dd($eliminarRegistro);
 
-            return view('mostrarFacturaReversarEstatus2', $return);
+            return view('gestionweb.mostrarFacturaReversarEstatus2', $return);
         } elseif ($reverso == 3) {
             //dd($eliminarRegistro);
             $idTecnico = $facturas->last()->idtecnico;
@@ -242,7 +242,7 @@ class GestionController extends Controller
 
             $return = array_merge($data, $eliminarRegistro);
 
-            return view('mostrarFacturaReversarEstatus3', $return);
+            return view('gestionweb.mostrarFacturaReversarEstatus3', $return);
         }
     }
 
