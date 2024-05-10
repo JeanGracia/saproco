@@ -32,4 +32,10 @@
             :active="request()->routeIs('mostrar-solicitud.show')" />
     </x-sidebar.dropdown>
 
+    <x-sidebar.link title="SIS" href="{{ route('sis.index') }}" :isActive="request()->routeIs('sis.index')">
+        <x-slot name="icon">
+            <x-icons.sis class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
 </x-perfect-scrollbar>

@@ -17,7 +17,7 @@
         </div>
     </x-slot>
 
-    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        {{ __("You're logged in!")  }}
+    <div class="text-4xl text-center font-bold p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        SISTEMA DE AUTOMATIZACIÓN DE PROCESOS CORRECTIVOS
     </div>
 </x-app-layout>

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GestionWeb\GestionController; // JG 25/3/2024
 use App\Http\Controllers\Sigesca\PagoController; // JG 25/3/2024
 use App\Http\Controllers\Sigesca\SigescaController; // JG 25/3/2024
+use App\Http\Controllers\Sis\SisController;
 
 // indica que al acceder a la raíz de la aplicación, se ejecutará el método __invoke del controlador HomeController.
 Route::get('/', HomeController::class)->name('home'); // JG 25/3/2024
@@ -31,9 +32,9 @@ Route::controller(PagoController::class)->prefix('sigesca/pago')->group(function
     Route::get('/buscar-solicitud', 'index')->name('buscar-solicitud.index');
     Route::get('/mostrar-solicitud', 'show')->name('mostrar-solicitud.show');
     Route::get('/{solicitud}/edit', 'edit')->name('pago.edit');
-    Route::put('/{solicitud}', 'update')->name('cargarPago-update');
+    Route::put('/{solicitud}', 'update')->name('cargarPago.update');
     Route::put('/tbl-solicitud/{solicitud}', 'Solicituds')->name('tbl.solicituds');
-    Route::put('/tbl-roduct-solicitud/{solicitud}', 'ProductSolicitud')->name('tbl.productSolicitud');
+    Route::put('/tbl-product-solicitud/{solicitud}', 'ProductSolicitud')->name('tbl.productSolicitud');
 });
 
 /**
@@ -81,6 +82,18 @@ Route::prefix('eliminar-registro')->group(function () {
     Route::delete('/consulta-tecnica/{idfactura}', [GestionController::class, 'consultaTecnica'])->name('consulta-tecnica.delete');
     Route::delete('/niv/{idfactura}', [GestionController::class, 'niv'])->name('niv.delete');
     Route::delete('/certificado-inspeccion/{idfactura}', [GestionController::class, 'certInspeccion'])->name('certificado-inspeccion.delete');
+});
+
+/**
+ * --------------------------------------------------------------------------
+ * Implementación del módulo sis JG 6/5/2024
+ * --------------------------------------------------------------------------
+ */
+
+Route::middleware('auth')->controller(SisController::class)->prefix('sis')->group(function () {
+    Route::get('/buscar-rem', 'index')->name('sis.index');
+    Route::get('/mostrar-rem', 'show')->name('sis.show');
+    Route::delete('/borrar/{asignacion}/{idSolicitud}/{memocertificados}/{impresionCertificado}/{statusCertificado}/{certificado}', 'destroy')->name('sis.destroy');
 });
 
 require __DIR__ . '/auth.php';

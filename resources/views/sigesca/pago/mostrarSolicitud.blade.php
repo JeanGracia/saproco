@@ -4,6 +4,14 @@
         RESULTADO
     @endsection
 
+    {{-- Alerta --}}
+    @if(session('success'))
+        <div class="fixed top-0 right-0 m-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded z-50">
+            <span class="badge"><strong class="font-bold">Éxito!</strong></span>
+            <span class="animate-pulse block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
